@@ -42,7 +42,7 @@ const updateDirector = catchError(async(req, res) => {
     const director = await Director.findByPk(id)
     if(!director)  return res.json({mgs: "director no encontrado"})
     const result = await Director.update(edit,{where:{id}, returning:true})
-    res.status(200).res.json(result[1][0])
+    res.status(200).json(result[1][0])
 })
 
 

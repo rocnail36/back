@@ -42,7 +42,7 @@ const updateGenre = catchError(async(req, res) => {
     const genre = await Genre.findByPk(id)
     if(!genre)  return res.json({mgs: "genre no encontrado"})
     const result = await Genre.update(edit,{where:{id}, returning:true})
-    res.status(200).res.json(result[1][0])
+    res.status(200).json(result[1][0])
 })
 
 
