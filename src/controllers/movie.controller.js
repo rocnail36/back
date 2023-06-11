@@ -35,7 +35,7 @@ const deleteMovie = catchError(async(req,res) => {
     const movie = await Movie.findByPk(id)
     if(!movie)  return res.json({mgs: "movie no encontrado"})
     const result = await Movie.destroy({where:{id}})
-    res.status(200).json({mgs:"movie eliminado"}) 
+    res.json({mgs:"movie eliminado"}) 
 })
 
 const updateMovie = catchError(async(req, res) => {
