@@ -33,7 +33,7 @@ const deleteActor = catchError(async(req,res) => {
     const actor = await Actor.findByPk(id)
     if(!actor)  return res.json({mgs: "actor no encontrado"})
     const result = await Actor.destroy({where:{id}})
-    res.status(400).json({mgs:"actor eliminado"}) 
+    res.status(200).json({mgs:"actor eliminado"}) 
 })
 
 const updateActor = catchError(async(req, res) => {
@@ -43,7 +43,7 @@ const updateActor = catchError(async(req, res) => {
     const actor = await Actor.findByPk(id)
     if(!actor)  return res.json({mgs: "actor no encontrado"})
     const result = await Actor.update(edit,{where:{id}, returning:true})
-    res.status(400).res.json(result)
+    res.status(200).res.json(result[1][0])
 })
 
 module.exports = {

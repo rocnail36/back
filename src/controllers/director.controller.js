@@ -32,7 +32,7 @@ const deleteDirector = catchError(async(req,res) => {
     const director = await Director.findByPk(id)
     if(!director)  return res.json({mgs: "director no encontrado"})
     const result = await Director.destroy({where:{id}})
-    res.status(400).json({mgs:"director eliminado"}) 
+    res.status(200).json({mgs:"director eliminado"}) 
 })
 
 const updateDirector = catchError(async(req, res) => {
@@ -42,7 +42,7 @@ const updateDirector = catchError(async(req, res) => {
     const director = await Director.findByPk(id)
     if(!director)  return res.json({mgs: "director no encontrado"})
     const result = await Director.update(edit,{where:{id}, returning:true})
-    res.status(400).res.json(result)
+    res.status(200).res.json(result[1][0])
 })
 
 
