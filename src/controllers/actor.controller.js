@@ -13,7 +13,7 @@ const addActor = catchError(async(req,res) => {
 const getAllActors = catchError(async(req,res) => {
    
     const result = await Actor.findAll()
-    if(result.length == 0) return res.json({mgs:"no hay actores para mostrar"})
+   
     res.json(result)
 })
 

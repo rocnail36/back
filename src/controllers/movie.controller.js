@@ -16,7 +16,6 @@ const addMovie = catchError(async(req,res) => {
 const getAllMovies = catchError(async(req,res) => {
    
     const result = await Movie.findAll({include: [Director,Actor,Genre]})
-    if(result.length == 0) return res.json({mgs:"no hay movies para mostrar"})
     res.json(result)
 })
 

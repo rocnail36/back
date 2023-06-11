@@ -13,7 +13,6 @@ const addDirector = catchError(async(req,res) => {
 const getAllDirectors = catchError(async(req,res) => {
    
     const result = await Director.findAll()
-    if(result.length == 0) return res.json({mgs:"no hay directores para mostrar"})
     res.json(result)
 })
 

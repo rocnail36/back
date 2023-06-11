@@ -13,7 +13,6 @@ const addGenre = catchError(async(req,res) => {
 const getAllGenres = catchError(async(req,res) => {
    
     const result = await Genre.findAll()
-    if(result.length == 0) return res.json({mgs:"no hay generos para mostrar"})
     res.json(result)
 })
 
