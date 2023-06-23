@@ -6,7 +6,7 @@ const addDirector = catchError(async(req,res) => {
     
     const director = req.body
     const result = await  Director.create(director)
-    res.status(203).json(result)
+    res.status(201).json(result)
 })
 
 
@@ -32,7 +32,7 @@ const deleteDirector = catchError(async(req,res) => {
     const director = await Director.findByPk(id)
     if(!director)  return res.json({mgs: "director no encontrado"})
     const result = await Director.destroy({where:{id}})
-    res.status(200).json({mgs:"director eliminado"}) 
+    res.status(204).json({mgs:"director eliminado"}) 
 })
 
 const updateDirector = catchError(async(req, res) => {

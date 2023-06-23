@@ -9,7 +9,7 @@ const addMovie = catchError(async(req,res) => {
     
     const movie = req.body
     const result = await  Movie.create(movie)
-    res.status(203).json(result)
+    res.status(201).json(result)
 })
 
 
@@ -35,7 +35,7 @@ const deleteMovie = catchError(async(req,res) => {
     const movie = await Movie.findByPk(id)
     if(!movie)  return res.json({mgs: "movie no encontrado"})
     const result = await Movie.destroy({where:{id}})
-    res.json({mgs:"movie eliminado"}) 
+    res.status(200).json({mgs:"movie eliminado"}) 
 })
 
 const updateMovie = catchError(async(req, res) => {
@@ -56,7 +56,7 @@ const setActors = catchError(async(req,res) => {
     if(!movie) return res.sendStatus(404)
     await movie.setActors(actors)
     const result = await movie.getActors()
-    res.json(result)
+    res.status(200).json(result)
 })
 
 const setGenres = catchError(async(req,res) => {
@@ -67,7 +67,7 @@ const setGenres = catchError(async(req,res) => {
     if(!movie) return res.sendStatus(404)
     await movie.setGenres(genres)
     const result = await movie.getGenres()
-    res.json(result)
+    res.status(200).json(result)
 })
 
 const setDirectors = catchError(async(req,res) => {
@@ -79,7 +79,7 @@ const setDirectors = catchError(async(req,res) => {
     
     await movie.setDirectors(directors)
     const result = await movie.getDirectors()
-    res.json(result)
+    res.status(200).json(result)
 
 })
 

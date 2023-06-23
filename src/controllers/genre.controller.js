@@ -6,7 +6,7 @@ const addGenre = catchError(async(req,res) => {
     
     const genre = req.body
     const result = await  Genre.create(genre)
-    res.status(203).json(result)
+    res.status(201).json(result)
 })
 
 
@@ -32,7 +32,7 @@ const deleteGenre = catchError(async(req,res) => {
     const genre = await Genre.findByPk(id)
     if(!genre)  return res.json({mgs: "genre no encontrado"})
     const result = await Genre.destroy({where:{id}})
-    res.status(200).json({mgs:"genre eliminado"}) 
+    res.status(204).json({mgs:"genre eliminado"}) 
 })
 
 const updateGenre = catchError(async(req, res) => {

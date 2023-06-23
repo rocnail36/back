@@ -6,7 +6,7 @@ const addActor = catchError(async(req,res) => {
     
     const actor = req.body
     const result = await  Actor.create(actor)
-    res.status(203).json(result)
+    res.status(201).json(result)
 })
 
 
@@ -33,7 +33,7 @@ const deleteActor = catchError(async(req,res) => {
     const actor = await Actor.findByPk(id)
     if(!actor)  return res.json({mgs: "actor no encontrado"})
     const result = await Actor.destroy({where:{id}})
-    res.status(200).json({mgs:"actor eliminado"}) 
+    res.status(204).json({mgs:"actor eliminado"}) 
 })
 
 const updateActor = catchError(async(req, res) => {
